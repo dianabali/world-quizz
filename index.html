@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>World Quizz</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Inter:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Top bar: always visible, switches between modes -->
+  <header>
+    <button class="brand" id="home-btn">World Quizz</button>
+    <button class="tab" data-mode="country">Country mode</button>
+    <button class="tab" data-mode="flag">Flag mode</button>
+    <button class="tab" data-mode="continent">Continent mode</button>
+  </header>
+
+  <main>
+
+    <!-- Home screen: choose a mode -->
+    <section id="home" class="home">
+      <h1>Learn every country<br>and every flag.</h1>
+      <p>Every round covers all countries in a fresh random order. Pick how you want to practise.</p>
+
+      <div class="modes">
+        <button class="mode" data-mode="country">
+          <div class="ico">🗺️</div>
+          <h2>Country mode</h2>
+          <span>A country is highlighted on the world map. Name it.</span>
+        </button>
+
+        <button class="mode" data-mode="flag">
+          <div class="ico">🏳️</div>
+          <h2>Flag mode</h2>
+          <span>You see a flag. Say which country it belongs to.</span>
+        </button>
+
+        <button class="mode" data-mode="continent">
+          <div class="ico">🌍</div>
+          <h2>Continent mode</h2>
+          <span>Pick a continent and practise only its countries.</span>
+        </button>
+      </div>
+
+      <p id="status" class="status">Loading countries…</p>
+    </section>
+
+    <!-- Continent picker -->
+    <section id="pick" class="home pick hide">
+      <h1>Choose a continent</h1>
+      <p>First choose what you want to be asked, then tap a continent.</p>
+
+      <div class="seg" id="seg">
+        <button class="on" data-type="country">Map</button>
+        <button data-type="flag">Flags</button>
+      </div>
+
+      <div class="conts" id="conts"></div>
+    </section>
+
+    <!-- Game screen -->
+    <section id="game" class="hide">
+      <div class="bar">
+        <span id="prog"></span>
+        <span id="score"></span>
+      </div>
+
+      <div class="stage">
+        <svg id="map" viewBox="0 0 960 500" role="img" aria-label="World map"></svg>
+        <div id="flagbox" class="flagbox hide">
+          <img id="flag" alt="Flag of a country">
+        </div>
+      </div>
+
+      <div class="q" id="question"></div>
+
+      <div class="row">
+        <input id="ans" placeholder="Type the country name" autocomplete="off" autocapitalize="off" spellcheck="false">
+        <button class="btn" id="go">Check</button>
+        <button class="btn ghost" id="skip">I don't know</button>
+      </div>
+
+      <div id="fb" aria-live="polite"></div>
+    </section>
+
+    <!-- Results screen -->
+    <section id="end" class="end hide">
+      <h2 id="final"></h2>
+      <p id="finalsub" class="sub"></p>
+
+      <div class="row">
+        <button class="btn" id="again">Play again</button>
+        <button class="btn ghost" id="other">Switch mode</button>
+        <button class="btn ghost hide" id="chg">Change continent</button>
+      </div>
+
+      <h3 id="mh"></h3>
+      <ul class="missed" id="missed"></ul>
+    </section>
+
+  </main>
+
+  <!-- Libraries and data are bundled locally, so the site needs no network access to work -->
+  <script src="vendor/d3.min.js"></script>
+  <script src="vendor/topojson-client.min.js"></script>
+  <script src="data/countries.js"></script>
+  <script src="data/world.js"></script>
+
+  <script src="js/app.js"></script>
+</body>
+
+</html>

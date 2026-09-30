@@ -1,0 +1,332 @@
+/* World Quiz styles */
+:root {
+  --bg: #fff5db;
+  --card: #fffcf5;
+  --tx: #4a1d3d;
+  --mut: #8f6a7f;
+  --ac: #d6336c;
+  --on-ac: #ffffff;
+  --ok: #1f8a5b;
+  --bad: #d63a3a;
+  --land: #f8d977;
+  --sea: #fde8ee;
+  --hl: #c2185b;
+  --ring: #4a1d3d;
+  --line: #f0d4bd;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #2a1526;
+    --card: #3a2036;
+    --tx: #ffeef3;
+    --mut: #d3a9bd;
+    --ac: #ff6fa3;
+    --on-ac: #2a1526;
+    --ok: #6fe0a0;
+    --bad: #ff8585;
+    --land: #d8b45a;
+    --sea: #351a30;
+    --hl: #ff5c96;
+    --ring: #ffffff;
+    --line: #5a3552;
+  }
+}
+
+/* Base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--tx);
+  font: 16px/1.5 Inter, system-ui, sans-serif;
+}
+
+h1,
+h2,
+.brand {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ac);
+  outline-offset: 2px;
+}
+
+main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px 16px 48px;
+}
+
+.hide {
+  display: none !important;
+}
+
+/* Header and mode tabs */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.brand {
+  margin-right: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--tx);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.tab {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tx);
+}
+
+.tab.on {
+  border-color: var(--tx);
+  background: var(--tx);
+  color: var(--bg);
+}
+
+/* Home screen and continent picker */
+.home h1 {
+  margin: 32px 0 8px;
+  font-size: clamp(34px, 7vw, 60px);
+  font-weight: 800;
+  line-height: 1.02;
+}
+
+.home p {
+  max-width: 52ch;
+  margin: 0 0 28px;
+  color: var(--mut);
+}
+
+.home .status {
+  margin-top: 24px;
+}
+
+.pick h1 {
+  font-size: clamp(30px, 6vw, 48px);
+}
+
+.pick p {
+  margin-bottom: 16px;
+}
+
+.modes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.mode {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+  color: var(--tx);
+  text-align: left;
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.mode:hover {
+  transform: translateY(-3px);
+  border-color: var(--ac);
+}
+
+.mode .ico {
+  font-size: 40px;
+}
+
+.mode h2 {
+  margin: 8px 0 6px;
+  font-size: 26px;
+}
+
+.mode span {
+  color: var(--mut);
+}
+
+/* Map / Flags switch */
+.seg {
+  display: inline-flex;
+  margin-bottom: 20px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.seg button {
+  padding: 8px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tx);
+}
+
+.seg button.on {
+  background: var(--tx);
+  color: var(--bg);
+}
+
+/* Continent buttons */
+.conts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.cbtn h2 {
+  margin: 0 0 2px;
+  font-size: 22px;
+}
+
+/* Game screen */
+.bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: var(--mut);
+  font-weight: 500;
+}
+
+.stage {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+}
+
+/* World map */
+#map {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--sea);
+  cursor: grab;
+  touch-action: none;
+}
+
+#map path {
+  fill: var(--land);
+  stroke: var(--bg);
+  stroke-width: 0.4;
+  vector-effect: non-scaling-stroke;
+}
+
+#map path.hl {
+  fill: var(--hl);
+}
+
+#ring {
+  fill: none;
+  stroke: var(--ring);
+  pointer-events: none;
+}
+
+/* Flag */
+.flagbox {
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px;
+  background: var(--sea);
+}
+
+#flag {
+  max-width: min(440px, 90%);
+  max-height: 300px;
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Question, answer input and feedback */
+.q {
+  margin: 20px 0 12px;
+  font: 700 22px 'Bricolage Grotesque', sans-serif;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+input {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 14px;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--tx);
+  font: inherit;
+}
+
+.btn {
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--ac);
+  color: var(--on-ac);
+  font-weight: 500;
+}
+
+.btn.ghost {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--tx);
+}
+
+#fb {
+  min-height: 30px;
+  margin-top: 12px;
+  font-weight: 500;
+}
+
+.ok {
+  color: var(--ok);
+}
+
+.bad {
+  color: var(--bad);
+}
+
+/* Results screen */
+.end h2 {
+  margin: 24px 0 4px;
+  font-size: 40px;
+}
+
+.end .sub {
+  color: var(--mut);
+}
+
+.missed {
+  columns: 2 220px;
+  padding-left: 18px;
+  color: var(--mut);
+}
