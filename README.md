@@ -2,7 +2,7 @@
 
 A simple browser game for learning every country and flag in the world.
 
-[World Quizz](https://world-quizz.vercel.app/)
+Live: [World Quizz](https://world-quizz.vercel.app/)
 
 ## Table of contents
 
