@@ -1032,18 +1032,6 @@ window.COUNTRIES = [
     ]
   },
   {
-    "code": "il",
-    "id": "376",
-    "name": "Israel",
-    "continent": "Asia",
-    "ll": [31.47,35.13],
-    "names": [
-      "Israel",
-      "State of Israel",
-      "Medīnat Yisrā'el"
-    ]
-  },
-  {
     "code": "it",
     "id": "380",
     "name": "Italy",
